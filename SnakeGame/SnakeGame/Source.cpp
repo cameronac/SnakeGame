@@ -1,7 +1,10 @@
 #include <iostream>
 #include <stdio.h>
 #include "SDL.h"
+
+//Managed Libraries
 #include "WindowHandler.h"
+#include "InputHandler.h"
 
 using namespace std;
 
@@ -13,24 +16,18 @@ int main(int argc, char* args[]) {
 		printf("SDL could not Initialize Video!");
 	}
 
-	//Objects
-	WindowHandler windowHandler = WindowHandler(); //Handles Window Operations
-
 	//Main Loop flag
 	bool quitLoop = false;
-	
-	//Event Handler
-	SDL_Event e;
+
+	//Objects
+	WindowHandler windowHandler = WindowHandler(); //Handles Window Operations
+	InputHandler inputHandler = InputHandler(&quitLoop); //Handles any Input
+
 
 	//Game Loop
 	while (!quitLoop) {
-		//Handle Events on queue
-		while (SDL_PollEvent(&e) != 0) {
-			//User requests quit 
-			if (e.type == SDL_QUIT) {
-				quitLoop = true;
-			}
-		}
+
+		inputHandler.checkInput(); // Checks all input including Window and Keyboard
 	}
 
 	return 0;
