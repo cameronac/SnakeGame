@@ -3,8 +3,9 @@
 #include "SDL.h"
 
 //Managed Libraries
-#include "WindowHandler.h"
-#include "InputHandler.h"
+#include "WindowController.h"
+#include "InputController.h"
+#include "RenderController.h"
 
 using namespace std;
 
@@ -20,9 +21,8 @@ int main(int argc, char* args[]) {
 	bool quitLoop = false;
 
 	//Objects
-	WindowHandler windowHandler = WindowHandler(); //Handles Window Operations
-	InputHandler inputHandler = InputHandler(&quitLoop); //Handles any Input
-
+	WindowController windowHandler = WindowController(); //Handles Window Operations
+	InputController inputHandler = InputController(&quitLoop); //Handles any Input
 
 	//Game Loop
 	while (!quitLoop) {
