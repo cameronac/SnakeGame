@@ -20,14 +20,16 @@ int main(int argc, char* args[]) {
 	//Main Loop flag
 	bool quitLoop = false;
 
-	//Objects
+	//Controller Objects
 	WindowController windowHandler = WindowController(); //Handles Window Operations
 	InputController inputHandler = InputController(&quitLoop); //Handles any Input
+	RenderController renderController = RenderController(&windowHandler.window); //Handles basic Rendering Tasks
 
 	//Game Loop
 	while (!quitLoop) {
 
 		inputHandler.checkInput(); // Checks all input including Window and Keyboard
+		renderController.DisplayRender();
 	}
 
 	return 0;

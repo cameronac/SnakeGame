@@ -18,7 +18,6 @@ WindowController::WindowController() {
 //De-initializer
 WindowController::~WindowController() {
 	quit();
-	printf("Deallocated WindowHandler");
 }
 
 //Methods
