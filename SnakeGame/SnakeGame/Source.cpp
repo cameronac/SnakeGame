@@ -29,7 +29,24 @@ int main(int argc, char* args[]) {
 	//Update Window Surface
 	SDL_UpdateWindowSurface(window);
 
-	SDL_Delay(3000); //window lasts 3 seconds
+	//Main Loop flag
+	bool quit_loop = false;
+	
+	//Event Handler
+	SDL_Event e;
+
+	//Game Loop
+	while (!quit_loop) {
+		//Handle Events on queue
+		while (SDL_PollEvent(&e) != 0) {
+			//User requests quit 
+			if (e.type == SDL_QUIT) {
+				quit_loop = true;
+			}
+		}
+	}
+
+
 	quit(window);
 	return 0;
 }
