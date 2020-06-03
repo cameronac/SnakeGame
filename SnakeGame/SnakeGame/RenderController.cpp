@@ -29,7 +29,6 @@ RenderController::~RenderController()
 ///Refreshes Screen
 void RenderController::DisplayRender()
 {
-	SetupBackground();
 	//TODO: Assign Objects to Renderer
 	RenderPresent();
 }

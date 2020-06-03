@@ -3,24 +3,20 @@
 
 class RenderController
 {
-	//Private Properties
-	private:
-		SDL_Renderer* renderer;
-
 	//Public Properties
 	public:
 		SDL_Window** window = nullptr;
-
+		SDL_Renderer* renderer;
 
 	//Public Methods
 	public:
 		void DisplayRender();
+		void SetupBackground();
 		RenderController(SDL_Window** window);
 		~RenderController();
 
 	//Private Methods
 	private:
-		void SetupBackground();
 		void RenderPresent();
 };
 

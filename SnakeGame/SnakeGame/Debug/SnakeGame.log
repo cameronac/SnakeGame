@@ -1,2 +1,3 @@
 ﻿  GameController.cpp
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\GameController.cpp(27,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   SnakeGame.vcxproj -> C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\Debug\SnakeGame.exe

@@ -7,6 +7,7 @@ class FPSController
 	public:
 		double lastTime;
 		double deltaTime;
+
 	//Public Methods
 	public:
 		FPSController();

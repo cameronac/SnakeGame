@@ -20,6 +20,6 @@ void FPSController::updateFPS()
 	double startTime = SDL_GetTicks();
 	double passedTime = startTime - lastTime;
 	lastTime = startTime;
-	deltaTime = lastTime * 0.001f;
-	printf("%.6f", deltaTime);
+	deltaTime = lastTime;
+	printf("%.6f", deltaTime * 10);
 }
