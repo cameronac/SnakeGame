@@ -144,12 +144,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FPSController.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="RenderController.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="WindowController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FPSController.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="RenderController.h" />
     <ClInclude Include="WindowController.h" />

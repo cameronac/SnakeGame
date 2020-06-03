@@ -6,6 +6,8 @@
 #include "WindowController.h"
 #include "InputController.h"
 #include "RenderController.h"
+#include "GameController.h"
+#include "FPSController.h"
 
 using namespace std;
 
@@ -21,15 +23,19 @@ int main(int argc, char* args[]) {
 	bool quitLoop = false;
 
 	//Controller Objects
-	WindowController windowHandler = WindowController(); //Handles Window Operations
-	InputController inputHandler = InputController(&quitLoop); //Handles any Input
-	RenderController renderController = RenderController(&windowHandler.window); //Handles basic Rendering Tasks
+	WindowController windowController = WindowController(); //Handles Window Operations
+	InputController inputController = InputController(&quitLoop); //Handles any Input
+	RenderController renderController = RenderController(&windowController.window); //Handles basic Rendering Tasks
+	GameController gameController = GameController(&renderController, &inputController); //Handles Game State 
+	FPSController fpsController = FPSController(); //Handles Delta Time which is used for SPD/Movement, etc
 
 	//Game Loop
 	while (!quitLoop) {
+		fpsController.updateFPS();
 
-		inputHandler.checkInput(); // Checks all input including Window and Keyboard
-		renderController.DisplayRender();
+		inputController.checkInput(); // Checks all input including Window and Keyboard
+		gameController.GameRefresh(); //Called before Display Render because it needs to add objects to the render first
+		renderController.DisplayRender(); //Displays Basic Shapes from the GameController
 	}
 
 	return 0;

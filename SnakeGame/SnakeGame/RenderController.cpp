@@ -20,11 +20,9 @@ RenderController::RenderController(SDL_Window** window)
 RenderController::~RenderController()
 {
 	SDL_DestroyRenderer(renderer);
-	free(window);
 	renderer = NULL;
 	window = NULL;
 }
-
 
 //Public Methods
 
