@@ -3,7 +3,6 @@
 #include "RenderController.h"
 #include "InputController.h"
 #include "PlayerController.h"
-#include "FPSController.h"
 
 class GameController
 {
@@ -11,12 +10,11 @@ class GameController
 	public: 
 		RenderController* renderController;
 		InputController* inputController;
-		FPSController* fpsController;
 		PlayerController playerController;
 
 	//Public Methods
 	public:
-		GameController(RenderController* renderController, InputController* inputController, FPSController* fpsController);
+		GameController(RenderController* renderController, InputController* inputController);
 		~GameController();
 		void GameRefresh();
 

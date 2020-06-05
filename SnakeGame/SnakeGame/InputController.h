@@ -3,17 +3,25 @@
 
 class InputController
 {
-private:
-	SDL_Event event = SDL_Event();
-	bool* quitLoop = NULL;
+	//Private Properties
+	private:
+		SDL_Event event = SDL_Event();
+		bool* quitLoop = NULL;
 
-public:
-	InputController(bool *quitLoop); //Initializer
-	~InputController(); //De-initializer
+	//Public Properties
+	public: 
+		bool rightKey = false;
+		bool leftKey = false;
+		bool upKey = false;
+		bool downKey = false;
+		bool spaceKey = false;
 
-	void checkInput(); //Checks all input methods| Should be in game loop
+	//Public Methods
+	public:
+		InputController(bool *quitLoop); //Initializer
+		~InputController(); //De-initializer
 
-	void windowInput();	//Individual Input Methods
-	void keyboardInput();
+		void checkInput(); //Checks all input methods| Should be in game loop
+		void resetKeys();	//Sets all keys to false
 };
 

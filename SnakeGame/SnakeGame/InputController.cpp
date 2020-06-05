@@ -17,45 +17,80 @@ InputController::~InputController()
 //Checks all inputs
 void InputController::checkInput()
 {
-	windowInput();
-	keyboardInput();
-}
-
-//Handles Window Input| Quit, etc
-void InputController::windowInput()
-{
+	//Handle Keyboard Events on queue
 	//Handle Events on queue
 	while (SDL_PollEvent(&event) != 0) {
+
+		//Window Input
 		//User requests quit 
 		if (event.type == SDL_QUIT) {
 			*quitLoop = true;
 		}
+
+		//Keyboard Input
+		if (event.type == SDL_KEYDOWN)
+		{
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_UP:
+				upKey = true;
+				break;
+
+			case SDLK_DOWN:
+				downKey = true;
+				break;
+
+			case SDLK_LEFT:
+				leftKey = true;
+				break;
+
+			case SDLK_RIGHT:
+				rightKey = true;
+				break;
+
+			case SDLK_SPACE:
+				spaceKey = true;
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		if (event.type == SDL_KEYUP) {
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_UP:
+				upKey = false;
+				break;
+
+			case SDLK_DOWN:
+				downKey = false;
+				break;
+
+			case SDLK_LEFT:
+				leftKey = false;
+				break;
+
+			case SDLK_RIGHT:
+				rightKey = false;
+				break;
+
+			case SDLK_SPACE:
+				spaceKey = false;
+				break;
+
+			default:
+				break;
+			}
+		}
 	}
 }
 
-//Handles Key Presses| Specifically Arrow Keys
-void InputController::keyboardInput()
-{
-	//Handle Keyboard Events on queue
-	if (event.type == SDL_KEYDOWN)
-	{
-		//Select surfaces based on key press
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_UP:
-			break;
-
-		case SDLK_DOWN:
-			break;
-
-		case SDLK_LEFT:
-			break;
-
-		case SDLK_RIGHT:
-			break;
-
-		default:
-			break;
-		}
-	}
+void InputController::resetKeys() {
+	upKey = false;
+	downKey = false;
+	rightKey = false;
+	leftKey = false;
+	spaceKey = false;
 }

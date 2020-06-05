@@ -7,7 +7,6 @@
 #include "InputController.h"
 #include "RenderController.h"
 #include "GameController.h"
-#include "FPSController.h"
 
 using namespace std;
 
@@ -19,24 +18,40 @@ int main(int argc, char* args[]) {
 		printf("SDL could not Initialize Video!");
 	}
 
+	//FPS
+	const int fps = 60;
+	const int frameDelay = 1000 / fps;
+	uint32_t frameStart;
+	int frameTime;
+
 	//Main Loop flag
 	bool quitLoop = false;
 
 	//Controller Objects
-	FPSController fpsController = FPSController(); //Handles Delta Time which is used for SPD/Movement, etc
 	WindowController windowController = WindowController(); //Handles Window Operations
 	InputController inputController = InputController(&quitLoop); //Handles any Input
 	RenderController renderController = RenderController(&windowController.window); //Handles basic Rendering Tasks
-	GameController gameController = GameController(&renderController, &inputController, &fpsController); //Handles Game State 
+	GameController gameController = GameController(&renderController, &inputController); //Handles Game State 
 
 	//Game Loop
 	while (!quitLoop) {
-		fpsController.updateFPS();
+
+		//Start FPS
+		frameStart = SDL_GetTicks();
 
 		renderController.SetupBackground(); //Called first so we don't draw over objects
 		inputController.checkInput(); // Checks all input including Window and Keyboard
 		gameController.GameRefresh(); //Called before Display Render because it needs to add objects to the render first
 		renderController.DisplayRender(); //Displays Basic Shapes from the GameController
+		
+		//End FPS
+		frameTime = SDL_GetTicks() - frameStart;
+	
+		if (frameDelay > frameTime) {
+			SDL_Delay(frameDelay - frameTime);
+		}
+
+		cout << "FPS: " << frameStart << endl;
 	}
 
 	return 0;

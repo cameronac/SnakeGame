@@ -1,3 +1,10 @@
 ﻿  GameController.cpp
-C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\GameController.cpp(27,37): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  InputController.cpp
+  PlayerController.cpp
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\PlayerController.cpp(25,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\PlayerController.cpp(31,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\PlayerController.cpp(37,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\PlayerController.cpp(43,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Source.cpp
+  Generating Code...
   SnakeGame.vcxproj -> C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\Debug\SnakeGame.exe
