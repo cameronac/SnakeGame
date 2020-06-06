@@ -5,8 +5,8 @@
 TailController::TailController()
 {
 	this->tailCount = 0;
-	this->tailCount += 1;
 	this->tails.push_back(Tail(0, 0, tailCount));
+	this->tailCount += 1;
 }
 
 //Returns Tails Count 
@@ -24,8 +24,8 @@ Tail TailController::getTailAt(int at)
 //Add a new tail to the tails vector
 void TailController::addNewTail()
 {
-	tailCount += 1;
 	tails.push_back(Tail(0, 0, tailCount));
+	tailCount += 1;
 }
 
 void TailController::deleteLastTail()

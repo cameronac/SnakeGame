@@ -23,15 +23,8 @@ void GameController::GameRefresh()
 {
 	//Checks Player Every Frame| Movement, etc
 	playerController.checkPlayer();
+	playerController.renderPlayer(&*renderController);
 
-	//Render Player
-	if (SDL_SetRenderDrawColor(renderController->renderer, playerController.color.r, playerController.color.g, playerController.color.b, playerController.color.a) == -1) {
-		printf("Error Setting Render Draw Color!");
-	}  
-	
-	if (SDL_RenderFillRect(renderController->renderer, &playerController.fillRect) == -1) {
-		printf("Error Rendering Fill Rect!");
-	}
 }
 
 //Toggles a Pause in Game

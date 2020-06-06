@@ -36,8 +36,8 @@ void RenderController::DisplayRender()
 //Private Methods
 ///Sets Up Background Before Rendering Objects Start
 void RenderController::SetupBackground()
-{
-	if (SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF) == -1) {
+{  
+	if (SDL_SetRenderDrawColor(renderer, 0x80, 0xFF, 0x80, 0xFF) == -1) {
 		printf("Couldn't Set Render Draw Color");
 	}
 
