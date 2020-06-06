@@ -17,8 +17,10 @@ InputController::~InputController()
 //Checks all inputs
 void InputController::checkInput()
 {
-	//Handle Keyboard Events on queue
-	//Handle Events on queue
+
+	spaceKey = false;
+
+	//Handle Keyboard/Window Events on queue
 	while (SDL_PollEvent(&event) != 0) {
 
 		//Window Input
@@ -49,7 +51,11 @@ void InputController::checkInput()
 				break;
 
 			case SDLK_SPACE:
-				spaceKey = true;
+				if (stopSpaceKey == false) {
+					spaceKey = true;
+					stopSpaceKey = true;
+					printf("Space Pressed");
+				}
 				break;
 
 			default:
@@ -77,6 +83,7 @@ void InputController::checkInput()
 				break;
 
 			case SDLK_SPACE:
+				stopSpaceKey = false;
 				spaceKey = false;
 				break;
 

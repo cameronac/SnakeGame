@@ -1,16 +1,20 @@
 #include "PlayerController.h"
 #include <stdio.h>
 
+//Default Initializer
 PlayerController::PlayerController()
 {
-	//Do Nothing
+	this->tailController = TailController();
 }
 
+//Custom Initializer
 PlayerController::PlayerController(InputController* inputController)
 {
     this->inputController = inputController;
+	this->tailController = TailController();
 }
 
+//Destructor
 PlayerController::~PlayerController()
 {
 }
@@ -18,28 +22,52 @@ PlayerController::~PlayerController()
 //Checks Keys to see if player needs to move
 void PlayerController::checkPlayer()
 {
-	//Player Movement
-	//Right Key
-	if (inputController->rightKey) {
-		xPosition += spd;
-		fillRect.x = floor(xPosition);
+	if (inputController != NULL) {
+		//Player Movement
+		//Right Key
+		if (inputController->rightKey) {
+			direction = right;
+		}
+
+		//Left Key
+		if (inputController->leftKey) {
+			direction = left;
+		}
+
+		//Up Key
+		if (inputController->upKey) {
+			direction = up;
+		}
+
+		//Down Key
+		if (inputController->downKey) {
+			direction = down;
+		}
+
+		//Space Key
+		if (inputController->spaceKey) {
+			tailController.addNewTail();
+		}
 	}
 
-	//Left Key
-	if (inputController->leftKey) {
-		xPosition += -spd;
-		fillRect.x = floor(xPosition);
-	}
-
-	//Up Key
-	if (inputController->upKey) {
+	//Move Player In Direction
+	switch (direction) {
+	case up:
 		yPosition += -spd;
 		fillRect.y = floor(yPosition);
-	}
-
-	//Down Key
-	if (inputController->downKey) {
+		break;
+	case down:
 		yPosition += spd;
 		fillRect.y = floor(yPosition);
+		break;
+	case right:
+		xPosition += spd;
+		fillRect.x = floor(xPosition);
+		break;
+	case left:
+		xPosition += -spd;
+		fillRect.x = floor(xPosition);
+		break;
+
 	}
 }

@@ -13,48 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Controllers">
+      <UniqueIdentifier>{7feafef6-0fa8-48f0-a78c-f77d4deaafdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{1c56c151-0042-4981-ab59-625c35746fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{00ad11b4-4f3b-49a0-a9a3-01033510432f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{9443e884-da6c-4ba7-9125-b703b3eced3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source">
+      <UniqueIdentifier>{4fd97d21-4be3-43cf-bc79-1908459eccd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderController.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GameController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="InputController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameController.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="PlayerController.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Tail.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="TailController.cpp">
+      <Filter>Source Files\Controllers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RenderController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WindowController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="GameController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="PlayerController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Tail.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="TailController.h">
+      <Filter>Header Files\Controllers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

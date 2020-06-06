@@ -50,8 +50,6 @@ int main(int argc, char* args[]) {
 		if (frameDelay > frameTime) {
 			SDL_Delay(frameDelay - frameTime);
 		}
-
-		cout << "FPS: " << frameStart << endl;
 	}
 
 	return 0;

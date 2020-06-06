@@ -146,18 +146,22 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="GameController.cpp" />
+    <ClCompile Include="Tail.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="RenderController.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="TailController.cpp" />
     <ClCompile Include="WindowController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Tail.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="RenderController.h" />
+    <ClInclude Include="TailController.h" />
     <ClInclude Include="WindowController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,6 +7,7 @@ class InputController
 	private:
 		SDL_Event event = SDL_Event();
 		bool* quitLoop = NULL;
+		bool stopSpaceKey = false;
 
 	//Public Properties
 	public: 
