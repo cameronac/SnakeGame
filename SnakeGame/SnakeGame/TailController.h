@@ -10,9 +10,15 @@ class TailController
 		int tailCount;
 
 	public:
+		int* xPosition;
+		int* yPosition;
+		double* speed;
+
+	public:
 		TailController();
+		TailController(int* xPosition, int* yPosition, double* speed);
 		int getTailCount();
-		Tail getTailAt(int at);
+		Tail* getTailAt(int at);
 		void addNewTail();
 		void deleteLastTail();
 		void reset();

@@ -1,13 +1,22 @@
 #include "Tail.h"
+#include <iostream>
 
 //Initializer
-Tail::Tail(double xPosition, double yPosition, int tailIdentifier)
+Tail::Tail(int tailIdentifier)
 {
-	this->xPosition = xPosition;
-	this->yPosition = yPosition;
 	this->tailIdentifier = tailIdentifier;
 }
 
-void Tail::checkTail()
+void Tail::checkTail(int xPosition, int yPosition)
 {
+	std::cout << xPosition << ", " << yPosition << std::endl;
+	
+	if (tailIdentifier > 0) {
+		fillRect.x = (tailIdentifier * 32) + xPosition;
+		fillRect.y = (tailIdentifier * 32) + yPosition;
+	}
+	else {
+		fillRect.x = (32) + xPosition;
+		fillRect.y = (32) + yPosition;
+	}
 }

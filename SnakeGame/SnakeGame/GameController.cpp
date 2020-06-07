@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>   
 
-//Initializer
+//Constructor
 GameController::GameController(RenderController* renderController, InputController* inputController)
 {
 	this->renderController = renderController;

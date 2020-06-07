@@ -10,10 +10,10 @@ class PlayerController
 {  
 	//Public Properties
 	public:
-
 		double xPosition = 32;
 		double yPosition = 32;
 		double spd = 2.0;
+		bool didChangeDirection = false;
 
 		//Render red filled quad
 		SDL_Rect fillRect = { 32, 32, 32, 32 };
