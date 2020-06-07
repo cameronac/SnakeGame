@@ -1,6 +1,7 @@
 #pragma once
 #include "Tail.h"
 #include <vector>
+#include "Direction.h"
 
 //Keeps Track of how many tails are being created
 class TailController
@@ -13,10 +14,11 @@ class TailController
 		int* xPosition;
 		int* yPosition;
 		double* speed;
+		Direction* direction;
 
 	public:
 		TailController();
-		TailController(int* xPosition, int* yPosition, double* speed);
+		TailController(int* xPosition, int* yPosition, double* speed, Direction* direction);
 		int getTailCount();
 		Tail* getTailAt(int at);
 		void addNewTail();

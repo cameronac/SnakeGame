@@ -1,2 +1,6 @@
-﻿  PlayerController.cpp
+﻿  Tail.cpp
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\Tail.cpp(63,20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\Tail.cpp(66,20): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\Tail.cpp(69,20): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SnakeGame\Tail.cpp(72,20): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
   SnakeGame.vcxproj -> C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\Debug\SnakeGame.exe

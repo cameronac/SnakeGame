@@ -1,22 +1,76 @@
 #include "Tail.h"
 #include <iostream>
 
-//Initializer
-Tail::Tail(int tailIdentifier)
+//Constructors
+Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, int xPosition, int yPosition)
 {
+	this->playerDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
+	this->currentDirection = lastTailDirection;
+	this->fillRect.x = xPosition;
+	this->fillRect.y = yPosition;
 }
 
-void Tail::checkTail(int xPosition, int yPosition)
+Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, int xPosition, int yPosition)
 {
-	std::cout << xPosition << ", " << yPosition << std::endl;
+	this->playerDirection = playerDirection;
+	this->tailIdentifier = tailIdentifier;
+	this->currentDirection = lastTailDirection;
+	this->tailQueue = tailQueue;
+	this->fillRect.x = xPosition;
+	this->fillRect.y = yPosition;
+}
+
+void Tail::checkTail()
+{	
+	//Check Queue
+	if (tailQueue.empty() == false) {
+		Move top = tailQueue.front();
+		//Check Tail Position
+		switch (currentDirection) {
+		case Direction::right:
+			if (fillRect.x >= top.xPosition) {
+				printf("Triggered Right");
+				currentDirection = top.direction;
+				tailQueue.pop();
+			}
+			break;
+		case Direction::left:
+			if (fillRect.x <= top.xPosition) {
+				printf("Triggered Left");
+				currentDirection = top.direction;
+				tailQueue.pop();
+			}
+			break;
+		case Direction::up:
+			if (fillRect.y <= top.yPosition) {
+				currentDirection = top.direction;
+				tailQueue.pop();
+			}
+			break;
+		case Direction::down:
+			if (fillRect.y >= top.yPosition) {
+				currentDirection = top.direction;
+				tailQueue.pop();
+			}
+			break;
+		}
+	}
 	
-	if (tailIdentifier > 0) {
-		fillRect.x = (tailIdentifier * 32) + xPosition;
-		fillRect.y = (tailIdentifier * 32) + yPosition;
+	//Move Tail in Direction
+	switch (currentDirection) {
+	case Direction::right:
+		fillRect.x += 2.0;
+		break;
+	case Direction::left:
+		fillRect.x -= 2.0;
+		break;
+	case Direction::up:
+		fillRect.y -= 2.0;
+		break;
+	case Direction::down:
+		fillRect.y += 2.0;
+		break;
 	}
-	else {
-		fillRect.x = (32) + xPosition;
-		fillRect.y = (32) + yPosition;
-	}
+
 }
