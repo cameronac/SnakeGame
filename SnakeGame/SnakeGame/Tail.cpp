@@ -7,3 +7,7 @@ Tail::Tail(double xPosition, double yPosition, int tailIdentifier)
 	this->yPosition = yPosition;
 	this->tailIdentifier = tailIdentifier;
 }
+
+void Tail::checkTail()
+{
+}

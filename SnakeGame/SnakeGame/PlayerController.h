@@ -4,16 +4,13 @@
 #include "InputController.h"
 #include "TailController.h"
 #include "RenderController.h"
-
-enum class Direction {
-	up, down, left, right
-};
-
+#include "Direction.h"
 
 class PlayerController
 {  
 	//Public Properties
 	public:
+
 		double xPosition = 32;
 		double yPosition = 32;
 		double spd = 2.0;

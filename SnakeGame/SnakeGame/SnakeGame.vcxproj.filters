@@ -89,5 +89,8 @@
     <ClInclude Include="Move.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

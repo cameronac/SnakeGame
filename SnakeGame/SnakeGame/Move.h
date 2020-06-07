@@ -1,5 +1,5 @@
 #pragma once
-#include "PlayerController.h"
+#include "Direction.h"
 
 struct Move {
 public:

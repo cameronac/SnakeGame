@@ -27,22 +27,22 @@ void PlayerController::checkPlayer()
 	if (inputController != NULL) {
 		//Player Movement
 		//Right Key
-		if (inputController->rightKey && direction != Direction::left) {
+		if (inputController->rightKey && direction != Direction::left && direction != Direction::right) {
 			direction = Direction::right;
 		}
 
 		//Left Key
-		if (inputController->leftKey && direction != Direction::right) {
+		if (inputController->leftKey && direction != Direction::right && direction != Direction::left) {
 			direction = Direction::left;
 		}
 
 		//Up Key
-		if (inputController->upKey && direction != Direction::down) {
+		if (inputController->upKey && direction != Direction::down && direction != Direction::down) {
 			direction = Direction::up;
 		}
 
 		//Down Key
-		if (inputController->downKey && direction != Direction::up) {
+		if (inputController->downKey && direction != Direction::up && direction != Direction::up) {
 			direction = Direction::down;
 		}
 
@@ -74,6 +74,16 @@ void PlayerController::checkPlayer()
 	default:
 		break;
 	}
+
+	//TODO
+	//Before Checking Tails State We need to check if the direction has changed and assign it to all the tail queues
+
+	//Check Tails State
+	for (int i = 0; i < tailController.getTailCount(); i++) {
+		Tail tail = tailController.getTailAt(i);
+		tail.checkTail();
+	}
+
 }
 
 //Takes in a renderer and adds players elements to it to draw
