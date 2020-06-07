@@ -22,7 +22,7 @@ Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDire
 }
 
 void Tail::checkTail()
-{	
+{
 	//Check Queue
 	if (tailQueue.empty() == false) {
 		Move top = tailQueue.front();
@@ -30,46 +30,61 @@ void Tail::checkTail()
 		switch (currentDirection) {
 		case Direction::right:
 			if (fillRect.x >= top.xPosition) {
-				printf("Triggered Right");
 				currentDirection = top.direction;
+				fillRect.x = top.xPosition;
 				tailQueue.pop();
 			}
 			break;
 		case Direction::left:
 			if (fillRect.x <= top.xPosition) {
-				printf("Triggered Left");
 				currentDirection = top.direction;
+				fillRect.x = top.xPosition;
 				tailQueue.pop();
 			}
 			break;
 		case Direction::up:
 			if (fillRect.y <= top.yPosition) {
 				currentDirection = top.direction;
+				fillRect.y = top.yPosition;
 				tailQueue.pop();
 			}
 			break;
 		case Direction::down:
 			if (fillRect.y >= top.yPosition) {
 				currentDirection = top.direction;
+				fillRect.y = top.yPosition;
 				tailQueue.pop();
 			}
 			break;
 		}
 	}
-	
+
 	//Move Tail in Direction
 	switch (currentDirection) {
 	case Direction::right:
-		fillRect.x += 2.0;
+		fillRect.x += 2;
 		break;
 	case Direction::left:
-		fillRect.x -= 2.0;
+		fillRect.x -= 2;
 		break;
 	case Direction::up:
-		fillRect.y -= 2.0;
+		fillRect.y -= 2;
 		break;
 	case Direction::down:
-		fillRect.y += 2.0;
+		fillRect.y += 2;
+		break;
+	}
+
+	//Make Sure Tail is Close to it's desired Position
+	//TODO
+	switch (currentDirection) {
+	case Direction::right:
+		break;
+	case Direction::left:
+		break;
+	case Direction::up:
+		break;
+	case Direction::down:
 		break;
 	}
 

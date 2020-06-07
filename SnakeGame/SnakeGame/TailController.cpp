@@ -12,7 +12,7 @@ TailController::TailController() {
 	this->speed = nullptr;
 }
 
-TailController::TailController(int* xPosition, int* yPosition, double* speed, Direction* direction)
+TailController::TailController(int* xPosition, int* yPosition, int* speed, Direction* direction)
 {
 	this->tailCount = 0;
 	this->tails.push_back(Tail(tailCount, *direction, Direction::right, *xPosition - 32, *yPosition));

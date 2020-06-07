@@ -10,9 +10,7 @@ class PlayerController
 {  
 	//Public Properties
 	public:
-		double xPosition = 32;
-		double yPosition = 32;
-		double spd = 2.0;
+		int spd = 2;
 		bool didChangeDirection = false;
 
 		//Render red filled quad

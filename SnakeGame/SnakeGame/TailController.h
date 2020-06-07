@@ -13,12 +13,12 @@ class TailController
 	public:
 		int* xPosition;
 		int* yPosition;
-		double* speed;
+		int* speed;
 		Direction* direction;
 
 	public:
 		TailController();
-		TailController(int* xPosition, int* yPosition, double* speed, Direction* direction);
+		TailController(int* xPosition, int* yPosition, int* speed, Direction* direction);
 		int getTailCount();
 		Tail* getTailAt(int at);
 		void addNewTail();

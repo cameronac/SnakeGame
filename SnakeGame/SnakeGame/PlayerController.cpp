@@ -21,7 +21,6 @@ PlayerController::PlayerController(InputController* inputController)
 //Destructor
 PlayerController::~PlayerController()
 {
-	printf("Destructor Called");
 }
 
 //Checks Keys to see if player needs to move
@@ -63,20 +62,16 @@ void PlayerController::checkPlayer()
 	//Move Player In Direction
 	switch (direction) {
 	case Direction::up:
-		yPosition += -spd;
-		fillRect.y = (int)floor(yPosition);
+		fillRect.y += -spd;
 		break;
 	case Direction::down:
-		yPosition += spd;
-		fillRect.y = (int)floor(yPosition);
+		fillRect.y += spd;
 		break;
 	case Direction::right:
-		xPosition += spd;
-		fillRect.x = (int)floor(xPosition);
+		fillRect.x += spd;
 		break;
 	case Direction::left:
-		xPosition += -spd;
-		fillRect.x = (int)floor(xPosition);
+		fillRect.x += -spd;
 		break;
 	default:
 		break;
