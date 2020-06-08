@@ -10,7 +10,7 @@ class GameController
 	public: 
 		RenderController* renderController;
 		InputController* inputController;
-		PlayerController playerController;
+		PlayerController playerController = PlayerController();
 
 	//Public Methods
 	public:

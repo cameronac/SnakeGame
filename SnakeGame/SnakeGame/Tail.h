@@ -4,12 +4,13 @@
 #include "Move.h"
 #include <queue>
 #include "Direction.h"
+#include "PositionHolder.h"
 
 class Tail {
 
 	public:
-		Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, int xPosition, int yPosition);
-		Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, int xPosition, int yPosition); //Constructor
+		Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY);
+		Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY); //Constructor
 		std::queue<Move> tailQueue;
 		void checkTail(); //Checks Tail every Frame and moves directions when needed
 		SDL_Rect fillRect = { 32, 32, 32, 32 };
@@ -17,4 +18,6 @@ class Tail {
 		Direction playerDirection;
 		Direction currentDirection;
 		int tailIdentifier;
+		PositionHolder* positionHolder = NULL;
+		PositionHolder* currentPosition = &PositionHolder(&fillRect.x, &fillRect.y);
 };

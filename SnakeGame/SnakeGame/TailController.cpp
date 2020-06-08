@@ -5,22 +5,17 @@
 TailController::TailController() {
 	this->tailCount = 0;
 	this->tailCount += 1;
-
-	//Setting Arguments
-	this->xPosition = nullptr;
-	this->yPosition = nullptr;
-	this->speed = nullptr;
 }
 
-TailController::TailController(int* xPosition, int* yPosition, int* speed, Direction* direction)
+TailController::TailController(PositionHolder* positionHolder, int* speed, Direction* direction)
 {
 	this->tailCount = 0;
-	this->tails.push_back(Tail(tailCount, *direction, Direction::right, *xPosition - 32, *yPosition));
+	this->direction = direction;
+	this->positionHolder = positionHolder;
+	this->tails.push_back(Tail(tailCount, *direction, Direction::right, &*this->positionHolder, -32, 0));
 	this->tailCount += 1;
-	
+
 	//Setting Arguments
-	this->xPosition = xPosition;
-	this->yPosition = yPosition;
 	this->speed = speed;
 }
 
@@ -42,7 +37,8 @@ void TailController::addNewTail()
 	if (tailCount > 0) {
 		const Tail* lastTail = getTailAt(tailCount);
 		int size = 32;
-		tails.push_back(Tail(tailCount, *direction, lastTail->currentDirection, lastTail->tailQueue, *xPosition, *yPosition));
+		Tail* upperTail = getTailAt(getTailCount());
+		tails.push_back(Tail(tailCount, *direction, lastTail->currentDirection, lastTail->tailQueue, upperTail->currentPosition, 0, 0));
 		tailCount += 1;
 	}
 }

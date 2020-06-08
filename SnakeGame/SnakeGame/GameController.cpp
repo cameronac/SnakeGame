@@ -7,7 +7,7 @@ GameController::GameController(RenderController* renderController, InputControll
 {
 	this->renderController = renderController;
 	this->inputController = inputController;
-	this->playerController = PlayerController(&*inputController);
+	playerController.inputController = &*inputController;
 }
 
 //De-initializer
@@ -24,7 +24,6 @@ void GameController::GameRefresh()
 	//Checks Player Every Frame| Movement, etc
 	playerController.checkPlayer();
 	playerController.renderPlayer(&*renderController);
-
 }
 
 //Toggles a Pause in Game

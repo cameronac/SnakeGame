@@ -2,23 +2,25 @@
 #include <iostream>
 
 //Constructors
-Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, int xPosition, int yPosition)
+Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
 	this->playerDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
-	this->fillRect.x = xPosition;
-	this->fillRect.y = yPosition;
+	this->positionHolder = positionHolder;
+	this->fillRect.x = *positionHolder->x + positionOffsetX;
+	this->fillRect.y = *positionHolder->y + positionOffsetY;
 }
 
-Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, int xPosition, int yPosition)
+Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
 	this->playerDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
 	this->tailQueue = tailQueue;
-	this->fillRect.x = xPosition;
-	this->fillRect.y = yPosition;
+	this->fillRect.x = *positionHolder->x + positionOffsetX;
+	this->fillRect.y = *positionHolder->y + positionOffsetY;
+	this->positionHolder = positionHolder;
 }
 
 void Tail::checkTail()
@@ -76,15 +78,63 @@ void Tail::checkTail()
 	}
 
 	//Make Sure Tail is Close to it's desired Position
-	//TODO
+	if (positionHolder != NULL) {
+		std::cout << "Head Position: " << positionHolder->x << ", " << positionHolder->y << std::endl;
+		std::cout << "Tail Position: " << fillRect.x << ", " << fillRect.y << std::endl;
+	}
+	else {
+		std::cout << "FollowXPosition is NULL" << std::endl;
+	}
+
 	switch (currentDirection) {
 	case Direction::right:
+
+		//Check X Position
+		if (fillRect.x < *positionHolder->x - 32) {
+			fillRect.x = *positionHolder->x - 32;
+		}
+
+		//Check Y Position
+		if (fillRect.y > *positionHolder->y + 32) {
+			fillRect.y = *positionHolder->y + 32;
+		}
 		break;
 	case Direction::left:
+
+		//Check X Position
+		if (fillRect.x > *positionHolder->x + 32) {
+			fillRect.x = *positionHolder->x + 32;
+		}
+
+		//Check Y Position
+		if (fillRect.y < *positionHolder->y - 32) {
+			fillRect.y = *positionHolder->y - 32;
+		}
 		break;
 	case Direction::up:
+
+		//Check X Position
+		if (fillRect.x < *positionHolder->x - 32) {
+			fillRect.x = *positionHolder->x - 32;
+		}
+
+		//Check Y Position
+		if (fillRect.y > *positionHolder->y + 32) {
+			fillRect.y = *positionHolder->y + 32;
+		}
+
 		break;
 	case Direction::down:
+
+		//Check X Position
+		if (fillRect.x < *positionHolder->x - 32) {
+			fillRect.x = *positionHolder->x - 32;
+		}
+
+		//Check Y Position
+		if (fillRect.y < *positionHolder->y - 32) {
+			fillRect.y = *positionHolder->y - 32;
+		}
 		break;
 	}
 

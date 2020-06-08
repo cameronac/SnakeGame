@@ -60,6 +60,9 @@
     <ClCompile Include="Move.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
+    <ClCompile Include="PositionHolder.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowController.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="Direction.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionHolder.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
   </ItemGroup>

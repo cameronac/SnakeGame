@@ -3,24 +3,23 @@
 #include <iostream>
 #include "Move.h"
 
+
 //Default Initializer
 PlayerController::PlayerController()
 {
-	this->tailController = TailController(&fillRect.x, &fillRect.y, &spd, &direction);
+	this->positionHolder = new PositionHolder(&fillRect.x, &fillRect.y);
+	this->tailController = new TailController(&*positionHolder, &spd, &direction);
 	this->direction = Direction::right;
-}
-
-//Custom Initializer
-PlayerController::PlayerController(InputController* inputController)
-{
-	this->tailController = TailController(&fillRect.x, &fillRect.y, &spd, &direction);
-	this->direction = Direction::right;
-    this->inputController = inputController;
 }
 
 //Destructor
 PlayerController::~PlayerController()
 {
+	delete positionHolder;
+	delete tailController; 
+
+	positionHolder = NULL;
+	tailController = NULL;
 }
 
 //Checks Keys to see if player needs to move
@@ -55,7 +54,7 @@ void PlayerController::checkPlayer()
 		//TODO: Only for Testing purposes; Delete
 		//Space Key
 		if (inputController->spaceKey) {
-			tailController.addNewTail();
+			tailController->addNewTail();
 		}
 	}
 
@@ -77,18 +76,23 @@ void PlayerController::checkPlayer()
 		break;
 	}
 
+	//TODO: Delete Comments
+	//Assign position to PositionHolder
+	//positionHolder->x = fillRect.x;
+	//positionHolder->y = fillRect.y;
+
 	//Add new Direction change to queue
 	if (didChangeDirection == true) {
-		for (int i = 0; i < tailController.getTailCount(); i++) {
-			Tail* tail = tailController.getTailAt(i);
+		for (int i = 0; i < tailController->getTailCount(); i++) {
+			Tail* tail = tailController->getTailAt(i);
 			tail->tailQueue.push(Move(fillRect.x, fillRect.y, direction));
 		}
 		didChangeDirection = false;
 	}
 
 	//Check Tails State
-	for (int i = 0; i < tailController.getTailCount(); i++) {
-		Tail* tail = tailController.getTailAt(i);
+	for (int i = 0; i < tailController->getTailCount(); i++) {
+		Tail* tail = tailController->getTailAt(i);
 		tail->checkTail();
 	}
 }
@@ -107,8 +111,8 @@ void PlayerController::renderPlayer(RenderController* renderController)
 	}
 
 	//Render the Tails of the player
-	for (int i = 0; i < tailController.getTailCount(); i++) {
-		Tail* tail = tailController.getTailAt(i);
+	for (int i = 0; i < tailController->getTailCount(); i++) {
+		Tail* tail = tailController->getTailAt(i);
 
 		//Drawing Tail Color
 		if (SDL_SetRenderDrawColor(renderController->renderer, tail->color.r, tail->color.g, tail->color.b, tail->color.a) == -1) {
