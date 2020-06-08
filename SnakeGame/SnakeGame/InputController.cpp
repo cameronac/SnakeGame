@@ -1,5 +1,5 @@
 #include "InputController.h"
-#include<stdio.h>
+#include <stdio.h>
 #include <string>
 
 //Initializer

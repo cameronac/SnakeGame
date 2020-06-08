@@ -8,9 +8,10 @@ class GameController
 {
 	//Public Variables
 	public: 
+		//Pointers
 		RenderController* renderController;
 		InputController* inputController;
-		PlayerController playerController = PlayerController();
+		PlayerController* playerController;
 
 	//Public Methods
 	public:

@@ -2,25 +2,38 @@
 #include <iostream>
 
 //Constructors
+//Adding Lead Tail before Head
 Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
 	this->playerDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
-	this->positionHolder = positionHolder;
 	this->fillRect.x = *positionHolder->x + positionOffsetX;
 	this->fillRect.y = *positionHolder->y + positionOffsetY;
+
+	//Pointer Assignments
+	this->currentPosition = new PositionHolder(&fillRect.x, &fillRect.y);
+	this->positionHolder = positionHolder;
 }
 
+//Adding New Tail to Leading Tail Constructor
 Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
+	std::cout << "Tail Created!" << std::endl;
 	this->playerDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
 	this->tailQueue = tailQueue;
+	this->positionHolder = positionHolder;
 	this->fillRect.x = *positionHolder->x + positionOffsetX;
 	this->fillRect.y = *positionHolder->y + positionOffsetY;
-	this->positionHolder = positionHolder;
+	this->currentPosition = new PositionHolder(&fillRect.x, &fillRect.y);
+}
+
+Tail::~Tail() {
+	delete currentPosition;
+
+	currentPosition = NULL;
 }
 
 void Tail::checkTail()
@@ -77,15 +90,7 @@ void Tail::checkTail()
 		break;
 	}
 
-	//Make Sure Tail is Close to it's desired Position
-	if (positionHolder != NULL) {
-		std::cout << "Head Position: " << positionHolder->x << ", " << positionHolder->y << std::endl;
-		std::cout << "Tail Position: " << fillRect.x << ", " << fillRect.y << std::endl;
-	}
-	else {
-		std::cout << "FollowXPosition is NULL" << std::endl;
-	}
-
+	//Make Sure Tails are close to the Head or next Tail
 	switch (currentDirection) {
 	case Direction::right:
 
@@ -137,5 +142,4 @@ void Tail::checkTail()
 		}
 		break;
 	}
-
 }

@@ -8,7 +8,7 @@
 class TailController
 {
 	private:
-		std::vector<Tail> tails;
+		std::vector<Tail*> tails;
 		int tailCount;
 
 	public:
@@ -17,8 +17,8 @@ class TailController
 		Direction* direction;
 
 	public:
-		TailController();
 		TailController(PositionHolder* positionHolder, int* speed, Direction* direction);
+		~TailController();
 		int getTailCount();
 		Tail* getTailAt(int at);
 		void addNewTail();

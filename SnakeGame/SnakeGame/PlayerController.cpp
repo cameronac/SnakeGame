@@ -5,18 +5,19 @@
 
 
 //Default Initializer
-PlayerController::PlayerController()
+PlayerController::PlayerController(InputController* inputController)
 {
+	//Assigning Pointers
+	this->inputController = inputController;
 	this->positionHolder = new PositionHolder(&fillRect.x, &fillRect.y);
 	this->tailController = new TailController(&*positionHolder, &spd, &direction);
-	this->direction = Direction::right;
 }
 
 //Destructor
 PlayerController::~PlayerController()
 {
 	delete positionHolder;
-	delete tailController; 
+	delete tailController;
 
 	positionHolder = NULL;
 	tailController = NULL;
