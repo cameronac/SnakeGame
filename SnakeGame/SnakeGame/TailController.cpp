@@ -7,7 +7,7 @@ TailController::TailController(PositionHolder* positionHolder, int* speed, Direc
 	this->tailCount = 0;
 	this->direction = direction;
 	this->positionHolder = positionHolder;
-	this->tails.push_back(new Tail(tailCount, *direction, Direction::right, &*this->positionHolder, -32, 0));
+	this->tails.push_back(new Tail(tailCount, &*this->direction, Direction::right, &*this->positionHolder, -32, 0));
 	this->tailCount += 1;
 
 	//Setting Arguments
@@ -43,7 +43,7 @@ void TailController::addNewTail()
 		Tail* leadingTail = getTailAt(tailCount - 1);
 		int size = 32;
 		std::cout << *leadingTail->currentPosition->x << std::endl;
-		tails.push_back(new Tail(tailCount, *direction, leadingTail->currentDirection, leadingTail->tailQueue, leadingTail->currentPosition, 0, 0));
+		tails.push_back(new Tail(tailCount, &leadingTail->currentDirection, leadingTail->currentDirection, leadingTail->tailQueue, leadingTail->currentPosition, 0, 0));
 		tailCount += 1;
 	}
 }

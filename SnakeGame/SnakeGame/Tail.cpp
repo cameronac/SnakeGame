@@ -3,9 +3,9 @@
 
 //Constructors
 //Adding Lead Tail before Head
-Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
+Tail::Tail(int tailIdentifier, Direction* playerDirection, Direction lastTailDirection, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
-	this->playerDirection = playerDirection;
+	this->leadingDirection = playerDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
 	this->fillRect.x = *positionHolder->x + positionOffsetX;
@@ -17,10 +17,9 @@ Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDire
 }
 
 //Adding New Tail to Leading Tail Constructor
-Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDirection, std::queue<Move> tailQueue, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
+Tail::Tail(int tailIdentifier, Direction *leadingDirection, Direction lastTailDirection, std::queue<Move> tailQueue, PositionHolder* positionHolder, int positionOffsetX, int positionOffsetY)
 {
-	std::cout << "Tail Created!" << std::endl;
-	this->playerDirection = playerDirection;
+	this->leadingDirection = leadingDirection;
 	this->tailIdentifier = tailIdentifier;
 	this->currentDirection = lastTailDirection;
 	this->tailQueue = tailQueue;
@@ -28,12 +27,32 @@ Tail::Tail(int tailIdentifier, Direction playerDirection, Direction lastTailDire
 	this->fillRect.x = *positionHolder->x + positionOffsetX;
 	this->fillRect.y = *positionHolder->y + positionOffsetY;
 	this->currentPosition = new PositionHolder(&fillRect.x, &fillRect.y);
+	setInitialPosition();
 }
 
 Tail::~Tail() {
 	delete currentPosition;
 
 	currentPosition = NULL;
+}
+
+//Sets Up New Snake Tail Starting Position
+void Tail::setInitialPosition() {
+
+	switch (*leadingDirection) {
+	case Direction::right:
+		fillRect.x = *positionHolder->x - 32;
+		break;
+	case Direction::left:
+		fillRect.x = *positionHolder->x + 32;
+		break;
+	case Direction::up:
+		fillRect.y = *positionHolder->y + 32;
+		break;
+	case Direction::down:
+		fillRect.y = *positionHolder->y - 32;
+		break;
+	}
 }
 
 void Tail::checkTail()
