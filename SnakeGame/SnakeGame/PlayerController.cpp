@@ -23,10 +23,9 @@ PlayerController::~PlayerController()
 	tailController = NULL;
 }
 
-
 //Public Methods
 //Collision Detection| Are we colliding with a Tail
-bool PlayerController::isColliding()
+bool PlayerController::checkCollision()
 {
 	//Check for collision
 	for (int i = 0; i < tailController->getTailCount(); i++) {
@@ -87,7 +86,7 @@ void PlayerController::checkPlayer()
 	}
 
 	//Collision With Tail
-	bool colliding = isColliding();
+	isColliding = checkCollision();
 
 	//Move Player In Direction
 	switch (direction) {

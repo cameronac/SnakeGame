@@ -25,7 +25,7 @@ class TailController
 		~TailController();	//Destructor
 		int getTailCount();	//Returns Tail Count
 		void addNewTail();	//Adds New Tail to Tails Vector
-		void deleteLastTail();
+		void deleteAllTails();	//Deletes all Tails except for Tail at index 0
 		void reset();
 };
 

@@ -20,6 +20,8 @@ class GameController
 		GameController(RenderController* renderController, InputController* inputController); //Constructor
 		~GameController();	//Destructor
 		void GameRefresh();	//Refreshes Game by updating the current state of all objects and adds them to the renderer respectivley
+		void RestartGame(); //Restarts the Game
+
 
 	//Private Methods
 	private:

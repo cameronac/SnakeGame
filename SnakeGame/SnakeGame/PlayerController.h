@@ -15,6 +15,7 @@ class PlayerController
 	public:
 		int spd = 2;
 		bool didChangeDirection = false;
+		bool isColliding = false;
 
 		//Pointers
 		PositionHolder* positionHolder;	//Player Position
@@ -31,7 +32,7 @@ class PlayerController
 		PlayerController(InputController* inputController);	//Constructor
 		~PlayerController();	//Destructor
 		void checkPlayer();		//Updates the players positions, movement, collision, etc | Should be called every frame
-		bool isColliding();		//Is the Head Colliding with a Tail
+		bool checkCollision();		//Is the Head Colliding with a Tail
 		void renderPlayer(RenderController* renderController); //Takes in a renderer and adds players elements to it to draw
 };
 

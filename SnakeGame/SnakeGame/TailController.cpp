@@ -1,4 +1,5 @@
 #include "TailController.h"
+#include <queue>
 
 //Constructor
 TailController::TailController(PositionHolder* positionHolder, int* speed, Direction* direction)
@@ -49,8 +50,32 @@ void TailController::addNewTail()
 	}
 }
 
-void TailController::deleteLastTail()
+//Deletes all Tails and Resets Tail at index 0 properties
+void TailController::deleteAllTails()
 {
+	//Hold Tail at Index 0
+	Tail* firstTail;
+
+	//Delete Tails
+	for (int i = 0; i < getTailCount(); i++) {
+		
+		if (i == 0) {
+			firstTail = getTailAt(i);
+			continue;
+		}
+		else {
+			delete getTailAt(i);
+		}
+	}
+
+	//Clear Vector
+	tails.clear();
+
+	tailCount = 1;	//Reset Count
+	tails.push_back(firstTail); //Add First Tail to Vector
+	firstTail->currentDirection = Direction::right;	//Reset Direction
+	std::queue<Move> empty;		//Swapping out queue for an empty queue
+	std::swap(firstTail->tailQueue, empty);
 }
 
 void TailController::reset()
