@@ -4,20 +4,22 @@
 #include "InputController.h"
 #include "PlayerController.h"
 
+/*
+	Keeps Track of GameState and updates objects
+*/
 class GameController
 {
 	//Public Variables
 	public: 
-		//Pointers
-		RenderController* renderController;
-		InputController* inputController;
-		PlayerController* playerController;
+		RenderController* renderController;	//Renderer
+		InputController* inputController;	//Input 
+		PlayerController* playerController;	//Player
 
 	//Public Methods
 	public:
-		GameController(RenderController* renderController, InputController* inputController);
-		~GameController();
-		void GameRefresh();
+		GameController(RenderController* renderController, InputController* inputController); //Constructor
+		~GameController();	//Destructor
+		void GameRefresh();	//Refreshes Game by updating the current state of all objects and adds them to the renderer respectivley
 
 	//Private Methods
 	private:

@@ -1,6 +1,10 @@
 #pragma once
 #include "SDL.h"
 
+/*
+	Controls all aspects of the Window| Including Window Size (Width, Height), 
+	Name, Type, Spawn Position on the Screen, and Window Surface.
+*/
 class WindowController
 {
 	//Public Properties
@@ -10,8 +14,8 @@ class WindowController
 	
 	//Public Methods
 	public:
-		WindowController();
-		~WindowController();
+		WindowController();	//Constructor
+		~WindowController(); //Destructor
 
 	//Private Methods
 	private:

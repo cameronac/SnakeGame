@@ -1,35 +1,37 @@
 #include "InputController.h"
-#include <stdio.h>
-#include <string>
 
-//Initializer
+//Constructor
 InputController::InputController(bool* quitLoop)
 {
 	this->quitLoop = quitLoop;
 }
 
-//De-initializer
+//Desctructor 
 InputController::~InputController()
 {
 	quitLoop = NULL;
 }
 
-//Checks all inputs
+//Public Methods 
+
+//Checks all input types| Should be called so it can update every frame along with the application
 void InputController::checkInput()
 {
-
+	//Resetting Keys
 	spaceKey = false;
 
 	//Handle Keyboard/Window Events on queue
 	while (SDL_PollEvent(&event) != 0) {
 
 		//Window Input
-		//User requests quit 
+		//Quit Pressed
 		if (event.type == SDL_QUIT) {
 			*quitLoop = true;
 		}
 
 		//Keyboard Input
+
+		//Pressed
 		if (event.type == SDL_KEYDOWN)
 		{
 			switch (event.key.keysym.sym)
@@ -54,7 +56,6 @@ void InputController::checkInput()
 				if (stopSpaceKey == false) {
 					spaceKey = true;
 					stopSpaceKey = true;
-					printf("Space Pressed");
 				}
 				break;
 
@@ -63,6 +64,7 @@ void InputController::checkInput()
 			}
 		}
 
+		//Released
 		if (event.type == SDL_KEYUP) {
 			switch (event.key.keysym.sym)
 			{
@@ -92,12 +94,4 @@ void InputController::checkInput()
 			}
 		}
 	}
-}
-
-void InputController::resetKeys() {
-	upKey = false;
-	downKey = false;
-	rightKey = false;
-	leftKey = false;
-	spaceKey = false;
 }

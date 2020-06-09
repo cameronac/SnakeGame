@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-//Initializer
+//Constructor
 RenderController::RenderController(SDL_Window** window)
 {
 	this->window = window;
@@ -16,25 +16,25 @@ RenderController::RenderController(SDL_Window** window)
 	}
 }
 
-//De-initializer
+//Destructor
 RenderController::~RenderController()
 {
 	SDL_DestroyRenderer(renderer);
+
 	renderer = NULL;
 	window = NULL;
 }
 
+
 //Public Methods
 
-///Refreshes Screen
+///Updates Screen With Newly assigned objects| Should always be called: When Objects are added and background is set then call this to display those objects
 void RenderController::DisplayRender()
 {
-	//TODO: Assign Objects to Renderer
-	RenderPresent();
+	SDL_RenderPresent(renderer);
 }
 
-//Private Methods
-///Sets Up Background Before Rendering Objects Start
+///Sets Up Background Before Rendering Objects Start| Should always be called: Before calling DisplayRender()
 void RenderController::SetupBackground()
 {  
 	if (SDL_SetRenderDrawColor(renderer, 0x80, 0xFF, 0x80, 0xFF) == -1) {
@@ -42,9 +42,4 @@ void RenderController::SetupBackground()
 	}
 
 	SDL_RenderClear(renderer);
-}
-
-///Updates Screen With Newly assigned objects| Called At the end of DisplayRenderer
-void RenderController::RenderPresent() {
-	SDL_RenderPresent(renderer);
 }

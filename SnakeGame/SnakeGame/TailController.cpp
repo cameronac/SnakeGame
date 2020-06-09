@@ -1,7 +1,6 @@
 #include "TailController.h"
-#include <iostream>
 
-//Initializers
+//Constructor
 TailController::TailController(PositionHolder* positionHolder, int* speed, Direction* direction)
 {
 	this->tailCount = 0;
@@ -9,13 +8,13 @@ TailController::TailController(PositionHolder* positionHolder, int* speed, Direc
 	this->positionHolder = positionHolder;
 	this->tails.push_back(new Tail(tailCount, &*this->direction, Direction::right, &*this->positionHolder, -32, 0));
 	this->tailCount += 1;
-
-	//Setting Arguments
 	this->speed = speed;
 }
 
+//Destructor
 TailController::~TailController() {
 
+	//Delete Allocated Tails
 	for (int i = 0; i < tailCount; i++) {
 		delete tails[i];
 	}
@@ -24,13 +23,15 @@ TailController::~TailController() {
 }
 
 
+//Public Methods 
+
 //Returns Tails Count 
 int TailController::getTailCount()
 {
 	return tailCount;
 }
 
-//Returns a tail at a specific Index
+//Returns the Tail Object at a specific Index
 Tail* TailController::getTailAt(int at)
 {
 	return &*tails[at];
@@ -39,10 +40,10 @@ Tail* TailController::getTailAt(int at)
 //Add a new tail to the tails vector
 void TailController::addNewTail()
 {
+	//Adds a new tail by getting the leading tails address of positionHolder so it can follow that tail
 	if (tailCount > 0) {
 		Tail* leadingTail = getTailAt(tailCount - 1);
 		int size = 32;
-		std::cout << *leadingTail->currentPosition->x << std::endl;
 		tails.push_back(new Tail(tailCount, &leadingTail->currentDirection, leadingTail->currentDirection, leadingTail->tailQueue, leadingTail->currentPosition, 0, 0));
 		tailCount += 1;
 	}
@@ -50,7 +51,6 @@ void TailController::addNewTail()
 
 void TailController::deleteLastTail()
 {
-
 }
 
 void TailController::reset()

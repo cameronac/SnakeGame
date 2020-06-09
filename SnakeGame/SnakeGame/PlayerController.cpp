@@ -4,7 +4,7 @@
 #include "Move.h"
 
 
-//Default Initializer
+//Constructor
 PlayerController::PlayerController(InputController* inputController)
 {
 	//Assigning Pointers
@@ -23,7 +23,10 @@ PlayerController::~PlayerController()
 	tailController = NULL;
 }
 
-//Checks Keys to see if player needs to move
+
+//Public Methods
+
+//Updates the players positions, movement, etc | Should be called every frame
 void PlayerController::checkPlayer()
 {
 	if (inputController != NULL) {

@@ -18,7 +18,7 @@ int main(int argc, char* args[]) {
 		printf("SDL could not Initialize Video!");
 	}
 
-	//FPS
+	//FPS Variables
 	const int fps = 60;
 	const int frameDelay = 1000 / fps;
 	uint32_t frameStart;
@@ -36,7 +36,7 @@ int main(int argc, char* args[]) {
 	//Game Loop
 	while (!quitLoop) {
 
-		//Start FPS
+		//Start FPS| Determine Ticks to control FPS at the End of the Loop
 		frameStart = SDL_GetTicks();
 
 		renderController.SetupBackground(); //Called first so we don't draw over objects
@@ -44,7 +44,7 @@ int main(int argc, char* args[]) {
 		gameController.GameRefresh(); //Called before Display Render because it needs to add objects to the render first
 		renderController.DisplayRender(); //Displays Basic Shapes from the GameController
 		
-		//End FPS
+		//End FPS| Delay   
 		frameTime = SDL_GetTicks() - frameStart;
 	
 		if (frameDelay > frameTime) {

@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 
-//Initializer
+//Constructor
 WindowController::WindowController() {
 	//Creating Window
 	window = SDL_CreateWindow("SnakeGame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
@@ -15,12 +15,13 @@ WindowController::WindowController() {
 	SDL_UpdateWindowSurface(window);
 }
 
-//De-initializer
+//Destructor
 WindowController::~WindowController() {
 	quit();
 }
 
-//Methods
+//Private Methods
+//When Quiting Free/Destroy Variables in Memory
 void WindowController::quit() {
 	SDL_FreeSurface(windowSurface);
 	SDL_DestroyWindow(window);

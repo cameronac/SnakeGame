@@ -1,9 +1,11 @@
 #pragma once
 #include "SDL.h"
-#include "Color.h"
 #include "InputController.h"
 #include "TailController.h"
 #include "RenderController.h"
+
+//Model Libraries
+#include "Color.h"
 #include "Direction.h"
 #include "PositionHolder.h"
 
@@ -15,9 +17,9 @@ class PlayerController
 		bool didChangeDirection = false;
 
 		//Pointers
-		PositionHolder* positionHolder;
-		InputController* inputController;
-		TailController* tailController;
+		PositionHolder* positionHolder;	//Player Position
+		InputController* inputController;	//Input
+		TailController* tailController;	
 
 		SDL_Rect fillRect = {32, 32, 32, 32};
 		Color color = Color(0xFF, 0x00, 0x00, 0xFF);
@@ -26,9 +28,9 @@ class PlayerController
 	
 	//Public Methods
 	public:
-		PlayerController(InputController* inputController);
-		~PlayerController();
-		void checkPlayer();
-		void renderPlayer(RenderController* renderController);
+		PlayerController(InputController* inputController);	//Constructor
+		~PlayerController();	//Destructor
+		void checkPlayer();		//Updates the players positions, movement, etc | Should be called every frame
+		void renderPlayer(RenderController* renderController); //Takes in a renderer and adds players elements to it to draw
 };
 

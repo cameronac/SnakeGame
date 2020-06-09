@@ -30,6 +30,7 @@ Tail::Tail(int tailIdentifier, Direction *leadingDirection, Direction lastTailDi
 	setInitialPosition();
 }
 
+//Destructor
 Tail::~Tail() {
 	delete currentPosition;
 
@@ -55,6 +56,7 @@ void Tail::setInitialPosition() {
 	}
 }
 
+//Updates Tail Object| Should Be called Every Frame
 void Tail::checkTail()
 {
 	//Check Queue

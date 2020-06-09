@@ -7,21 +7,24 @@
 //Keeps Track of how many tails are being created
 class TailController
 {
+	//Private Properties
 	private:
 		std::vector<Tail*> tails;
 		int tailCount;
 
+	//Public Properties
 	public:
 		PositionHolder* positionHolder;
 		int* speed;
 		Direction* direction;
-
-	public:
-		TailController(PositionHolder* positionHolder, int* speed, Direction* direction);
-		~TailController();
-		int getTailCount();
 		Tail* getTailAt(int at);
-		void addNewTail();
+
+	//Public Methods
+	public:
+		TailController(PositionHolder* positionHolder, int* speed, Direction* direction);	//Constructor
+		~TailController();	//Destructor
+		int getTailCount();	//Returns Tail Count
+		void addNewTail();	//Adds New Tail to Tails Vector
 		void deleteLastTail();
 		void reset();
 };

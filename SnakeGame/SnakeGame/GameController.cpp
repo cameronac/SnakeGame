@@ -1,7 +1,4 @@
-#include "GameController.h"
-#include <stdio.h>
-#include <iostream>
-#include <math.h>   
+#include "GameController.h" 
 
 //Constructor
 GameController::GameController(RenderController* renderController, InputController* inputController)
@@ -11,7 +8,7 @@ GameController::GameController(RenderController* renderController, InputControll
 	playerController = new PlayerController(&*inputController);
 }
 
-//De-initializer
+//Destructor
 GameController::~GameController()
 {
 	delete playerController;
@@ -22,12 +19,14 @@ GameController::~GameController()
 }
 
 //Public Methods
-//Called Before Rendering| Applies New and Existing objects to the Renderer
+//Updates all Game Objects and Adds them to the Renderer
 void GameController::GameRefresh()
 {
-	//Checks Player Every Frame| Movement, etc
+	//Update Objects
 	playerController->checkPlayer();
-	playerController->renderPlayer(&*renderController);
+
+	//Add Objects to Renderer
+	playerController->renderPlayer(&*renderController);	
 }
 
 //Toggles a Pause in Game

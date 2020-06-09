@@ -1,6 +1,10 @@
 #pragma once
 #include "SDL.h"
 
+/*
+	Handles all Keyboard/Mouse Input
+	Only one of these classes should be created
+*/
 class InputController
 {
 	//Private Properties
@@ -19,10 +23,9 @@ class InputController
 
 	//Public Methods
 	public:
-		InputController(bool *quitLoop); //Initializer
-		~InputController(); //De-initializer
+		InputController(bool *quitLoop); //Constructor
+		~InputController(); //Destructor
 
-		void checkInput(); //Checks all input methods| Should be in game loop
-		void resetKeys();	//Sets all keys to false
+		void checkInput(); //Checks all input types| Should be called so it can update every frame along with the application
 };
 
