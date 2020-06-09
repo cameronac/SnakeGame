@@ -27,7 +27,7 @@ PlayerController::~PlayerController()
 //Collision Detection| Are we colliding with a Tail
 bool PlayerController::checkCollision()
 {
-	//Check for collision
+	//Check for collision with Tails
 	for (int i = 0; i < tailController->getTailCount(); i++) {
 
 		if (i == 0) {
@@ -44,6 +44,15 @@ bool PlayerController::checkCollision()
 				}
 			}
 		}
+	}
+
+	//Check for collision with Room Bounds
+	if (*positionHolder->x < 0 || *positionHolder->x + 32 > 640) {
+		return true;
+	}
+	
+	if (*positionHolder->y < 0 || *positionHolder->y + 32 > 480) {
+		return true;
 	}
 
 	return false;

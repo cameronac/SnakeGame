@@ -6,7 +6,7 @@
 //Constructor
 WindowController::WindowController() {
 	//Creating Window
-	window = SDL_CreateWindow("SnakeGame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("SnakeGame", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 	
 	//Get Window Surface
 	windowSurface = SDL_GetWindowSurface(window);

@@ -1,10 +1,11 @@
 #include "GameController.h" 
 
 //Constructor
-GameController::GameController(RenderController* renderController, InputController* inputController)
+GameController::GameController(RenderController* renderController, InputController* inputController, WindowController* windowController)
 {
 	this->renderController = renderController;
 	this->inputController = inputController;
+	this->windowController = windowController;
 	playerController = new PlayerController(&*inputController);
 }
 
@@ -46,7 +47,3 @@ void GameController::RestartGame()
 	playerController->tailController->getTailAt(0)->fillRect.y = playerController->fillRect.y; 
 }
 
-//Toggles a Pause in Game
-void GameController::togglePause()
-{
-}

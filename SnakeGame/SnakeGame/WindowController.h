@@ -11,6 +11,8 @@ class WindowController
 	public:
 		SDL_Window* window;
 		SDL_Surface* windowSurface;
+		const int SCREEN_WIDTH = 640;
+		const int SCREEN_HEIGHT = 480;
 	
 	//Public Methods
 	public:

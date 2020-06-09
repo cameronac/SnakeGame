@@ -31,7 +31,7 @@ int main(int argc, char* args[]) {
 	WindowController windowController = WindowController(); //Handles Window Operations
 	InputController inputController = InputController(&quitLoop); //Handles any Input
 	RenderController renderController = RenderController(&windowController.window); //Handles basic Rendering Tasks
-	GameController gameController = GameController(&renderController, &inputController); //Handles Game State 
+	GameController gameController = GameController(&renderController, &inputController, &windowController); //Handles Game State 
 
 	//Game Loop
 	while (!quitLoop) {
