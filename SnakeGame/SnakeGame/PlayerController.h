@@ -30,7 +30,8 @@ class PlayerController
 	public:
 		PlayerController(InputController* inputController);	//Constructor
 		~PlayerController();	//Destructor
-		void checkPlayer();		//Updates the players positions, movement, etc | Should be called every frame
+		void checkPlayer();		//Updates the players positions, movement, collision, etc | Should be called every frame
+		bool isColliding();		//Is the Head Colliding with a Tail
 		void renderPlayer(RenderController* renderController); //Takes in a renderer and adds players elements to it to draw
 };
 

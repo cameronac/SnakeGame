@@ -25,6 +25,30 @@ PlayerController::~PlayerController()
 
 
 //Public Methods
+//Collision Detection| Are we colliding with a Tail
+bool PlayerController::isColliding()
+{
+	//Check for collision
+	for (int i = 0; i < tailController->getTailCount(); i++) {
+
+		if (i == 0) {
+			continue;	//Skip First Tail
+		}
+		else {
+			Tail* currentTail = tailController->getTailAt(i);
+
+			//Y Position Check
+			if (*currentTail->currentPosition->y + 32 > *positionHolder->y && *currentTail->currentPosition->y < *positionHolder->y + 32) {
+				//X Position Check
+				if (*currentTail->currentPosition->x + 32 > *positionHolder->x && *currentTail->currentPosition->x < *positionHolder->x + 32) {
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
+}
 
 //Updates the players positions, movement, etc | Should be called every frame
 void PlayerController::checkPlayer()
@@ -62,6 +86,9 @@ void PlayerController::checkPlayer()
 		}
 	}
 
+	//Collision With Tail
+	bool colliding = isColliding();
+
 	//Move Player In Direction
 	switch (direction) {
 	case Direction::up:
@@ -79,11 +106,6 @@ void PlayerController::checkPlayer()
 	default:
 		break;
 	}
-
-	//TODO: Delete Comments
-	//Assign position to PositionHolder
-	//positionHolder->x = fillRect.x;
-	//positionHolder->y = fillRect.y;
 
 	//Add new Direction change to queue
 	if (didChangeDirection == true) {
