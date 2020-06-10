@@ -15,13 +15,13 @@ class TailController
 	//Public Properties
 	public:
 		PositionHolder* positionHolder;
-		int* speed;
+		const int* speed;
 		Direction* direction;
 		Tail* getTailAt(int at);
 
 	//Public Methods
 	public:
-		TailController(PositionHolder* positionHolder, int* speed, Direction* direction);	//Constructor
+		TailController(PositionHolder* positionHolder, const int* speed, Direction* direction);	//Constructor
 		~TailController();	//Destructor
 		int getTailCount();	//Returns Tail Count
 		void addNewTail();	//Adds New Tail to Tails Vector

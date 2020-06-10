@@ -2,7 +2,7 @@
 #include <queue>
 
 //Constructor
-TailController::TailController(PositionHolder* positionHolder, int* speed, Direction* direction)
+TailController::TailController(PositionHolder* positionHolder, const int* speed, Direction* direction)
 {
 	this->tailCount = 0;
 	this->direction = direction;

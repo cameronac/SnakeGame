@@ -4,6 +4,7 @@
 #include "InputController.h"
 #include "PlayerController.h"
 #include "WindowController.h"
+#include "Fruit.h"
 
 /*
 	Keeps Track of GameState and updates objects
@@ -16,6 +17,7 @@ class GameController
 		InputController* inputController;	//Input 
 		PlayerController* playerController;	//Player
 		WindowController* windowController; //Window
+		Fruit* fruit; //Fruit
 
 	//Public Methods
 	public:

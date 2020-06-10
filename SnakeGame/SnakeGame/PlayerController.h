@@ -13,7 +13,7 @@ class PlayerController
 {  
 	//Public Properties
 	public:
-		int spd = 2;
+		const int spd = 3;
 		bool didChangeDirection = false;
 		bool isColliding = false;
 
@@ -33,6 +33,6 @@ class PlayerController
 		~PlayerController();	//Destructor
 		void checkPlayer();		//Updates the players positions, movement, collision, etc | Should be called every frame
 		bool checkCollision();		//Is the Head Colliding with a Tail
-		void renderPlayer(RenderController* renderController); //Takes in a renderer and adds players elements to it to draw
+		void renderPlayer(RenderController& renderController); //Takes in a renderer and adds players elements to it to draw
 };
 

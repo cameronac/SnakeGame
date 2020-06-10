@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Fruit.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="PositionHolder.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Direction.h" />
+    <ClInclude Include="Fruit.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Move.h" />

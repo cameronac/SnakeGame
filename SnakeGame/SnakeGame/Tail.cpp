@@ -98,16 +98,16 @@ void Tail::checkTail()
 	//Move Tail in Direction
 	switch (currentDirection) {
 	case Direction::right:
-		fillRect.x += 2;
+		fillRect.x += 3;
 		break;
 	case Direction::left:
-		fillRect.x -= 2;
+		fillRect.x -= 3;
 		break;
 	case Direction::up:
-		fillRect.y -= 2;
+		fillRect.y -= 3;
 		break;
 	case Direction::down:
-		fillRect.y += 2;
+		fillRect.y += 3;
 		break;
 	}
 

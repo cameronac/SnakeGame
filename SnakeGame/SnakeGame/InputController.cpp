@@ -17,8 +17,6 @@ InputController::~InputController()
 //Checks all input types| Should be called so it can update every frame along with the application
 void InputController::checkInput()
 {
-	//Resetting Keys
-	spaceKey = false;
 
 	//Handle Keyboard/Window Events on queue
 	while (SDL_PollEvent(&event) != 0) {
@@ -52,13 +50,6 @@ void InputController::checkInput()
 				rightKey = true;
 				break;
 
-			case SDLK_SPACE:
-				if (stopSpaceKey == false) {
-					spaceKey = true;
-					stopSpaceKey = true;
-				}
-				break;
-
 			default:
 				break;
 			}
@@ -82,11 +73,6 @@ void InputController::checkInput()
 
 			case SDLK_RIGHT:
 				rightKey = false;
-				break;
-
-			case SDLK_SPACE:
-				stopSpaceKey = false;
-				spaceKey = false;
 				break;
 
 			default:

@@ -1,7 +1,5 @@
-
 #include "WindowController.h"
 #include <stdio.h>
-
 
 //Constructor
 WindowController::WindowController() {
@@ -20,7 +18,9 @@ WindowController::~WindowController() {
 	quit();
 }
 
+
 //Private Methods
+
 //When Quiting Free/Destroy Variables in Memory
 void WindowController::quit() {
 	SDL_FreeSurface(windowSurface);

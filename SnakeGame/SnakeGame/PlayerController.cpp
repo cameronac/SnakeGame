@@ -23,7 +23,9 @@ PlayerController::~PlayerController()
 	tailController = NULL;
 }
 
+
 //Public Methods
+
 //Collision Detection| Are we colliding with a Tail
 bool PlayerController::checkCollision()
 {
@@ -86,12 +88,6 @@ void PlayerController::checkPlayer()
 			direction = Direction::down;
 			didChangeDirection = true;
 		}
-
-		//TODO: Only for Testing purposes; Delete
-		//Space Key
-		if (inputController->spaceKey) {
-			tailController->addNewTail();
-		}
 	}
 
 	//Collision With Tail
@@ -132,15 +128,15 @@ void PlayerController::checkPlayer()
 }
 
 //Takes in a renderer and adds players elements to it to draw
-void PlayerController::renderPlayer(RenderController* renderController)
+void PlayerController::renderPlayer(RenderController& renderController)
 {
 	//Render Player
 	//Render the Head of the player
-	if (SDL_SetRenderDrawColor(renderController->renderer, color.r, color.g, color.b, color.a) == -1) {
+	if (SDL_SetRenderDrawColor(renderController.renderer, color.r, color.g, color.b, color.a) == -1) {
 		printf("Error Setting Render Draw Color!");
 	}
 
-	if (SDL_RenderFillRect(renderController->renderer, &fillRect) == -1) {
+	if (SDL_RenderFillRect(renderController.renderer, &fillRect) == -1) {
 		printf("Error Rendering Fill Rect!");
 	}
 
@@ -149,12 +145,12 @@ void PlayerController::renderPlayer(RenderController* renderController)
 		Tail* tail = tailController->getTailAt(i);
 
 		//Drawing Tail Color
-		if (SDL_SetRenderDrawColor(renderController->renderer, tail->color.r, tail->color.g, tail->color.b, tail->color.a) == -1) {
+		if (SDL_SetRenderDrawColor(renderController.renderer, tail->color.r, tail->color.g, tail->color.b, tail->color.a) == -1) {
 			printf("Error Setting Render Draw Color!");
 		}
 
 		//Filling in Tail Rect
-		if (SDL_RenderFillRect(renderController->renderer, &tail->fillRect) == -1) {
+		if (SDL_RenderFillRect(renderController.renderer, &tail->fillRect) == -1) {
 			printf("Error Rendering Fill Rect!");
 		}
 	}

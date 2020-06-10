@@ -6,17 +6,20 @@ GameController::GameController(RenderController* renderController, InputControll
 	this->renderController = renderController;
 	this->inputController = inputController;
 	this->windowController = windowController;
-	playerController = new PlayerController(&*inputController);
+	this->playerController = new PlayerController(&*inputController);
+	this->fruit = new Fruit();
 }
 
 //Destructor
 GameController::~GameController()
 {
 	delete playerController;
+	delete fruit;
 
 	playerController = NULL;
 	renderController = NULL;
 	inputController = NULL;
+	fruit = NULL;
 }
 
 //Public Methods
@@ -25,15 +28,16 @@ void GameController::GameRefresh()
 {
 	//Update Objects
 	playerController->checkPlayer();
-	
+	fruit->checkFruit(*playerController);
+
 	//Was there a collision
 	if (playerController->isColliding == true) {
 		RestartGame();
 	}
 
-
 	//Add Objects to Renderer
-	playerController->renderPlayer(&*renderController);	
+	fruit->renderFruit(*renderController);
+	playerController->renderPlayer(*renderController);	
 }
 
 //Restart Game

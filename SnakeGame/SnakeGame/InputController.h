@@ -11,7 +11,6 @@ class InputController
 	private:
 		SDL_Event event = SDL_Event();
 		bool* quitLoop = NULL;
-		bool stopSpaceKey = false;
 
 	//Public Properties
 	public: 
@@ -19,7 +18,6 @@ class InputController
 		bool leftKey = false;
 		bool upKey = false;
 		bool downKey = false;
-		bool spaceKey = false;
 
 	//Public Methods
 	public:
