@@ -37,11 +37,12 @@ bool PlayerController::checkCollision()
 		}
 		else {
 			Tail* currentTail = tailController->getTailAt(i);
+			int tailSize = 30;
 
 			//Y Position Check
-			if (*currentTail->currentPosition->y + 32 > *positionHolder->y && *currentTail->currentPosition->y < *positionHolder->y + 32) {
+			if (*currentTail->currentPosition->y + tailSize > *positionHolder->y && *currentTail->currentPosition->y < *positionHolder->y + tailSize) {
 				//X Position Check
-				if (*currentTail->currentPosition->x + 32 > *positionHolder->x && *currentTail->currentPosition->x < *positionHolder->x + 32) {
+				if (*currentTail->currentPosition->x + tailSize > *positionHolder->x && *currentTail->currentPosition->x < *positionHolder->x + tailSize) {
 					return true;
 				}
 			}

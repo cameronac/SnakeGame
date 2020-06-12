@@ -24,17 +24,14 @@ int main(int argc, char* args[]) {
 	uint32_t frameStart;
 	int frameTime;
 
-	//Main Loop flag
-	bool quitLoop = false;
-
 	//Controller Objects
-	WindowController windowController = WindowController(); //Handles Window Operations
-	InputController inputController = InputController(&quitLoop); //Handles any Input
+	WindowController& windowController = WindowController::Get(); //Handles Window Operations
+	InputController& inputController = InputController::Get(); //Handles All Input
 	RenderController renderController = RenderController(&windowController.window); //Handles basic Rendering Tasks
 	GameController gameController = GameController(&renderController, &inputController, &windowController); //Handles Game State 
 
 	//Game Loop
-	while (!quitLoop) {
+	while (inputController.Get().quit == false) {
 
 		//Start FPS| Determine Ticks to control FPS at the End of the Loop
 		frameStart = SDL_GetTicks();

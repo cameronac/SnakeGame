@@ -1,30 +1,36 @@
 #include "InputController.h"
 
 //Constructor
-InputController::InputController(bool* quitLoop)
+InputController::InputController()
 {
-	this->quitLoop = quitLoop;
 }
 
 //Desctructor 
 InputController::~InputController()
 {
-	quitLoop = NULL;
 }
+
+//Static Definitions 
+bool InputController::rightKey = false;
+bool InputController::leftKey = false;
+bool InputController::upKey = false;
+bool InputController::downKey = false;
+bool InputController::quit = false;
+SDL_Event InputController::event = SDL_Event();
+
 
 //Public Methods 
 
 //Checks all input types| Should be called so it can update every frame along with the application
 void InputController::checkInput()
 {
-
 	//Handle Keyboard/Window Events on queue
 	while (SDL_PollEvent(&event) != 0) {
 
 		//Window Input
 		//Quit Pressed
 		if (event.type == SDL_QUIT) {
-			*quitLoop = true;
+			quit = true;
 		}
 
 		//Keyboard Input

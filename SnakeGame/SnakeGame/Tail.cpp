@@ -59,6 +59,7 @@ void Tail::setInitialPosition() {
 //Updates Tail Object| Should Be called Every Frame
 void Tail::checkTail()
 {
+
 	//Check Queue
 	if (tailQueue.empty() == false) {
 		Move top = tailQueue.front();
@@ -163,4 +164,5 @@ void Tail::checkTail()
 		}
 		break;
 	}
+
 }
