@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

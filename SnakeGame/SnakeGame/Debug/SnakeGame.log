@@ -1,4 +1,14 @@
-﻿  PlayerController.cpp
+﻿  Color.cpp
+  Fruit.cpp
+  GameController.cpp
+  Move.cpp
+  PositionHolder.cpp
+  Tail.cpp
+  InputController.cpp
+  PlayerController.cpp
+  RenderController.cpp
   Source.cpp
+  TailController.cpp
+  WindowController.cpp
   Generating Code...
   SnakeGame.vcxproj -> C:\Users\Cameron Collins\Desktop\Projects\SnakeGame\SnakeGame\SnakeGame\Debug\SnakeGame.exe
