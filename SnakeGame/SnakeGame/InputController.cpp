@@ -18,7 +18,6 @@ bool InputController::downKey = false;
 bool InputController::quit = false;
 SDL_Event InputController::event = SDL_Event();
 
-
 //Public Methods 
 
 //Checks all input types| Should be called so it can update every frame along with the application

@@ -3,14 +3,12 @@
 
 
 //Constructor
-RenderController::RenderController(SDL_Window** window)
+RenderController::RenderController()
 {
-	this->window = window;
+	//Create Renderer
+	renderer = SDL_CreateRenderer(&*WindowController::Get().window, -1, SDL_RENDERER_ACCELERATED);
 
 	//Create Renderer
-	this->renderer =
-		SDL_CreateRenderer(&**window, -1, SDL_RENDERER_ACCELERATED); 
-
 	if (renderer == NULL) {
 		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
 	}
@@ -22,11 +20,10 @@ RenderController::~RenderController()
 	SDL_DestroyRenderer(renderer);
 
 	renderer = NULL;
-	window = NULL;
 }
 
-
 //Public Methods
+SDL_Renderer* RenderController::renderer = nullptr;
 
 ///Updates Screen With Newly assigned objects| Should always be called: When Objects are added and background is set then call this to display those objects
 void RenderController::DisplayRender()
