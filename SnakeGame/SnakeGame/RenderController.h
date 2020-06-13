@@ -11,6 +11,8 @@ class RenderController
 	//Public Properties
 	public:
 		static SDL_Renderer* renderer;
+		static TTF_Font* font;
+		static SDL_Texture* texture;
 
 	//Public Methods
 	public:
@@ -23,7 +25,7 @@ class RenderController
 		}
 		static void DisplayRender();	//Displays Added Objects to the Renderer on the Screen
 		static void SetupBackground();	//Sets up backdrop of the window to the screen
-
+		static void DisplayFont();
 
 	//Public Methods
 	private:
