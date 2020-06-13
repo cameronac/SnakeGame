@@ -29,5 +29,4 @@ class Tail {
 		PositionHolder* positionHolder;
 		PositionHolder* currentPosition;
 		Direction* leadingDirection;
-
 };

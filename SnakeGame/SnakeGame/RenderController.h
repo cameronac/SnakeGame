@@ -2,6 +2,8 @@
 #include "SDL.h"
 #include "WindowController.h"
 #include <SDL_ttf.h>
+#include "TailController.h"
+
 /*
 	Singleton:
 	Handles all rendering tasks and displays objects added to the renderer
@@ -13,6 +15,7 @@ class RenderController
 		static SDL_Renderer* renderer;
 		static TTF_Font* font;
 		static SDL_Texture* texture;
+		static TailController* tailController;
 
 	//Public Methods
 	public:

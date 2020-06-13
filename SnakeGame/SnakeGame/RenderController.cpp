@@ -1,5 +1,7 @@
 #include "RenderController.h"
 #include <stdio.h>
+#include <iostream>
+#include <string>
 
 
 //Constructor
@@ -12,7 +14,7 @@ RenderController::RenderController()
 
 	//Create Renderer
 	renderer = SDL_CreateRenderer(&*WindowController::Get().window, -1, SDL_RENDERER_ACCELERATED);
-	font = TTF_OpenFont("../Fonts/04B_30__.ttf", 16);
+	font = TTF_OpenFont("../Fonts/04B_30__.ttf", 32);
 
 	if (font == NULL) {
 		printf("Failed to load font!");
@@ -41,16 +43,17 @@ RenderController::~RenderController()
 SDL_Renderer* RenderController::renderer = nullptr;
 TTF_Font* RenderController::font = nullptr;
 SDL_Texture* RenderController::texture = nullptr;
+TailController* RenderController::tailController = nullptr;
 
 ///Updates Screen With Newly assigned objects| Should always be called: When Objects are added and background is set then call this to display those objects
 void RenderController::DisplayRender()
 {
+	WindowController* windowController = &WindowController::Get();
+	SDL_Rect fruitRect = SDL_Rect { windowController->SCREEN_WIDTH-192, 0, 192, 32 };
 	DisplayFont();
 
-	SDL_Rect rect = SDL_Rect { 0, 0, 200, 50 };
-
 	//Render texture to screen
-	if (SDL_RenderCopy(renderer, texture, NULL, &rect) == -1) {
+	if (SDL_RenderCopy(renderer, texture, NULL, &fruitRect) == -1) {
 		printf("Failed to RenderCopy!");
 	}
 	SDL_RenderPresent(renderer);
@@ -75,9 +78,18 @@ void RenderController::DisplayFont()
 	//Color
 	SDL_Color color = SDL_Color{ 0, 0, 0, 255 };
 
+	//Getting Tail Count
+	int count = 0;
+	if (tailController != nullptr) {
+		count = tailController->getTailCount() - 1;
+	}
+
 	//Set up Surface
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, "Fruit:", color);
-	
+	std::string fruitString = "Fruit: " + std::to_string(count);
+	const char* fruitText = fruitString.c_str();
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, fruitText, color);
+	//std::cout << textSurface->w << " " << textSurface->h << std::endl;
+
 	//Creating a Texture from Surface and Error checking
 	if (textSurface == NULL) {
 		printf("TextSurface is NULL!");

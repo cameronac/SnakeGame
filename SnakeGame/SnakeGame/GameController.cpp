@@ -10,6 +10,7 @@ GameController::GameController()
 //Destructor
 GameController::~GameController()
 {
+	printf("Game Controller Destructor");
 	delete playerController;
 	delete fruit;
 
@@ -19,6 +20,14 @@ GameController::~GameController()
 	fruit = NULL;
 }
 
+
+//Public Static Variable Definitions
+/*InputController* GameController::inputController = &InputController::Get();
+RenderController* GameController::renderController = &RenderController::Get();
+WindowController* GameController::windowController = &WindowController::Get();
+PlayerController* GameController::playerController = nullptr;
+Fruit* GameController::fruit = nullptr;
+*/
 //Public Methods
 //Updates all Game Objects and Adds them to the Renderer
 void GameController::GameRefresh()

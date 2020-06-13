@@ -10,6 +10,7 @@ PlayerController::PlayerController()
 	//Assigning Pointers
 	this->positionHolder = new PositionHolder(&fillRect.x, &fillRect.y);
 	this->tailController = new TailController(&*positionHolder, &spd, &direction);
+	RenderController::tailController = tailController;
 }
 
 //Destructor
