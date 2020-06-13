@@ -5,10 +5,9 @@
 
 
 //Constructor
-PlayerController::PlayerController(InputController* inputController)
+PlayerController::PlayerController()
 {
 	//Assigning Pointers
-	this->inputController = inputController;
 	this->positionHolder = new PositionHolder(&fillRect.x, &fillRect.y);
 	this->tailController = new TailController(&*positionHolder, &spd, &direction);
 }
@@ -64,31 +63,29 @@ bool PlayerController::checkCollision()
 //Updates the players positions, movement, etc | Should be called every frame
 void PlayerController::checkPlayer()
 {
-	if (inputController != NULL) {
-		//Player Movement
-		//Right Key
-		if (inputController->rightKey && direction != Direction::left && direction != Direction::right) {
-			direction = Direction::right;
-			didChangeDirection = true;
-		}
+	//Player Movement
+	//Right Key
+	if (inputController.rightKey && direction != Direction::left && direction != Direction::right) {
+		direction = Direction::right;
+		didChangeDirection = true;
+	}
 
-		//Left Key
-		if (inputController->leftKey && direction != Direction::right && direction != Direction::left) {
-			direction = Direction::left;
-			didChangeDirection = true;
-		}
+	//Left Key
+	if (inputController.leftKey && direction != Direction::right && direction != Direction::left) {
+		direction = Direction::left;
+		didChangeDirection = true;
+	}
 
-		//Up Key
-		if (inputController->upKey && direction != Direction::down && direction != Direction::up) {
-			direction = Direction::up;
-			didChangeDirection = true;
-		}
+	//Up Key
+	if (inputController.upKey && direction != Direction::down && direction != Direction::up) {
+		direction = Direction::up;
+		didChangeDirection = true;
+	}
 
-		//Down Key
-		if (inputController->downKey && direction != Direction::up && direction != Direction::down) {
-			direction = Direction::down;
-			didChangeDirection = true;
-		}
+	//Down Key
+	if (inputController.downKey && direction != Direction::up && direction != Direction::down) {
+		direction = Direction::down;
+		didChangeDirection = true;
 	}
 
 	//Collision With Tail

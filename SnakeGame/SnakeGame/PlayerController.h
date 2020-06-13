@@ -19,7 +19,7 @@ class PlayerController
 
 		//Pointers
 		PositionHolder* positionHolder;	//Player Position
-		InputController* inputController;	//Input
+		InputController& inputController = InputController::Get();	//Input
 		TailController* tailController;	
 
 		SDL_Rect fillRect = {32, 32, 32, 32};
@@ -29,7 +29,7 @@ class PlayerController
 	
 	//Public Methods
 	public:
-		PlayerController(InputController* inputController);	//Constructor
+		PlayerController();	//Constructor
 		~PlayerController();	//Destructor
 		void checkPlayer();		//Updates the players positions, movement, collision, etc | Should be called every frame
 		bool checkCollision();		//Is the Head Colliding with a Tail

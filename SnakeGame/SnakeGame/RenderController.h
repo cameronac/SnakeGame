@@ -1,7 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include "WindowController.h"
-
+#include <SDL_ttf.h>
 /*
 	Singleton:
 	Handles all rendering tasks and displays objects added to the renderer
@@ -28,7 +28,6 @@ class RenderController
 	//Public Methods
 	private:
 		RenderController();	//Constructor
-		~RenderController(); //Destructor
-		
+		~RenderController(); //Destructor	
 };
 

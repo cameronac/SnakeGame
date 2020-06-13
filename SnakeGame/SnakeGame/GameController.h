@@ -13,15 +13,16 @@ class GameController
 {
 	//Public Variables
 	public: 
-		RenderController* renderController;	//Renderer
-		InputController* inputController;	//Input 
+		RenderController* renderController = &RenderController::Get();	//Renderer
+		InputController* inputController = &InputController::Get();	//Input 
+		WindowController* windowController = &WindowController::Get(); //Window
 		PlayerController* playerController;	//Player
-		WindowController* windowController; //Window
+		
 		Fruit* fruit; //Fruit
 
 	//Public Methods
 	public:
-		GameController(RenderController* renderController, InputController* inputController, WindowController* windowController); //Constructor
+		GameController(); //Constructor
 		~GameController();	//Destructor
 		void GameRefresh();	//Refreshes Game by updating the current state of all objects and adds them to the renderer respectivley
 		void RestartGame(); //Restarts the Game

@@ -28,7 +28,7 @@ int main(int argc, char* args[]) {
 	WindowController& windowController = WindowController::Get(); //Handles Window Operations
 	InputController& inputController = InputController::Get(); //Handles All Input
 	RenderController& renderController = RenderController::Get(); //Handles basic Rendering Tasks
-	GameController gameController = GameController(&renderController, &inputController, &windowController); //Handles Game State 
+	GameController gameController = GameController(); //Handles Game State 
 
 	//Game Loop
 	while (inputController.Get().quit == false) {

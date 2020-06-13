@@ -9,14 +9,14 @@ Fruit::Fruit()
 //Respawn/Move to a Random Area on the Screen
 void Fruit::respawn()
 {
-	//Get a Random Number between 0-640, and 0-480
+	//Get a Random Number between 0-SCREEN_WIDTH, and 0-SCREEN_HEIGHT
 	std::random_device rd; // obtain a random number from hardware
 	std::mt19937 gen(rd()); // seed the generator
-	std::uniform_int_distribution<> distr1(15, 640-15); //Define Range: X
-	std::uniform_int_distribution<> distr2(15, 480-15); //Define Range: Y
+	std::uniform_int_distribution<> distr1(spacing, WindowController::SCREEN_WIDTH - spacing); //Define Range: X
+	std::uniform_int_distribution<> distr2(spacing, WindowController::SCREEN_HEIGHT - spacing); //Define Range: Y
 
-	fillRect.x = distr1(gen);	//Generate and Assign Random Number
-	fillRect.y = distr2(gen);
+	fillRect.x = distr1(gen) - fillRect.w/2;	//Generate and Assign Random Number
+	fillRect.y = distr2(gen) - fillRect.h/2;
 }
 
 //Update Fruit if Collided with 

@@ -1,12 +1,9 @@
 #include "GameController.h" 
 
 //Constructor
-GameController::GameController(RenderController* renderController, InputController* inputController, WindowController* windowController)
+GameController::GameController() 
 {
-	this->renderController = renderController;
-	this->inputController = inputController;
-	this->windowController = windowController;
-	this->playerController = new PlayerController(&*inputController);
+	this->playerController = new PlayerController();
 	this->fruit = new Fruit();
 }
 
